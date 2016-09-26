@@ -1,10 +1,17 @@
 ---
 layout: default
 ---
+<!-- {% include header.html %} -->
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Posts (is this the real one tho)</h1>
+
+  <A HREF = "cv.html">cv</A>
+
+  <A HREF = "contact.html">contact</A>
+  
+  <A HREF = "vr.html">vr</A>
 
   <ul class="post-list">
     {% for post in site.posts %}
@@ -18,6 +25,6 @@ layout: default
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
 </div>
+
+<!-- {% include footer.html %} -->
