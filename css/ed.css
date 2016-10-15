@@ -1,0 +1,75 @@
+/*font*/
+@font-face { font-family: KC; src: url('fonts/KeepCalm-M.ttf'); }
+@font-face { font-family: spring; src: url('fonts/spring.ttf'); }
+
+/*class*/
+.parallax-window-top {
+    min-height: 800px;
+    background: transparent;
+    opacity: 1;
+}
+.parallax-window-bot {
+    min-height: 1400px;
+    background: transparent;
+    opacity: 1;
+}
+.parallax-window {
+    min-height: 700px;
+    background: transparent;
+    opacity: 1;
+}
+
+.regular_on_black{
+	min-height: 130px;
+	/*background: rgba(0, 0, 0, 0.5);*/
+	color: white;
+	/*font-family: "Segoe UI",Arial,sans-serif;*/
+	font-family: "KC";
+	/*position: absolute;*/
+	/*bottom: 0px;*/
+/*	padding-bottom: 0px;
+	width: 100%;*/
+	padding-top: 350px;
+	font-size: 30px;
+	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+	/*opacity: .5;*/
+}
+.regular_on_white{
+	min-height: 130px;
+	/*background: rgba(255,255,255, 0.5);*/
+	color: black;
+	/*font-family: "Segoe UI",Arial,sans-serif;*/
+	font-family: "KC";
+	/*position: absolute;*/
+	/*bottom: 0px;*/
+/*	padding-bottom: 0px;
+	width: 100%;*/
+	padding-top: 350px;
+	font-size: 30px;
+	text-align: center;
+	padding-left: 100px;
+	padding-right: 100px;
+	/*opacity: .5;*/
+}
+
+/*id*/
+#hello{
+	font-size: 80px;
+	position: absolute;
+	left: 450px;
+	padding-top: 80px;
+	font-family: 'courier new';
+
+}
+#hbd{
+	font-size: 80px;
+	/*position: absolute;*/
+	/*left: 450px;*/
+	text-align: center;
+	color:white;
+	padding-top: 180px;
+	font-family: 'spring';
+
+}

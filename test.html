@@ -1,0 +1,115 @@
+<!-- Hello World
+- ed
+
+Today is a super special day!
+
+Why?
+
+Because Today 26 years ago
+
+you came into this world
+
+
+
+and became the wonderful, hardworking, reliable and well traveled person that we all now know and love. 
+
+You've grown a lot from these past 26 years
+
+but there's still many more awesome adventures and excitement for you in the year to come
+
+So cheers to the old and the new
+
+Happy Birthday Ed! -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>Surprise Surprise</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+		<link rel="stylesheet" href="css/ed.css">
+	</head>
+	<body>
+		<div class="parallax-window-top" data-parallax="scroll" data-image-src="images/hello.jpg">
+			<div id="hello">hello world</div>
+		</div>
+
+		<div class="fade">
+			<img src="images/alps.jpg"></img>
+
+			<div class="regular_on_black">
+				Now, you've became the wonderful, hardworking, reliable and well traveled person that we all know and love. 	
+			</div>
+		</div>
+		
+		<div class="fade">
+			<img src="images/alps.jpg"></img>
+
+			<div class="regular_on_black">
+				Now, you've became the wonderful, hardworking, reliable and well traveled person that we all know and love. 	
+			</div>
+		</div>
+
+		<div class="fade">
+			<img src="images/banff.jpg"></img>
+
+			<div class="regular_on_black">
+				Now, you've became the wonderful, hardworking, reliable and well traveled person that we all know and love. 	
+			</div>
+		</div>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/parallax/parallax.js"></script>
+		<script type="text/javascript">
+
+			function toggle_to_Ed(){
+				var words = ['hello w0ld', 'hello wE1d', 'hello eLd', 'hello ElD', 'hello ed'];
+				var i = 0;
+				window.setInterval(function(){
+					if (i <= 4){
+						$("#hello").text(words[i]);
+						i++;
+					}
+				}, 50);
+			}
+
+			function extra_smiley(){
+				$("#hello").append(' :)');
+
+			}
+
+			$(document).ready(function(){
+				setTimeout(toggle_to_Ed, 650);
+				setTimeout(extra_smiley, 1900);
+			});
+			
+			$(window).on("load",function() {
+  				$(window).scroll(function() {
+    				$(".fade").each(function() {
+					     /* Check the location of each desired element */
+					    var objectBottom = $(this).offset().top + $(this).outerHeight();
+					    var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+					    var objectTop = $(this).offset().top;
+					    var windowTop = $(window).scrollTop();
+					      /* If the element is completely within bounds of the window, fade it in */
+					    if (objectTop < windowBottom) { //object comes into view (scrolling down)
+					    	if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+					    	} 
+					    else { //object goes out of view (scrolling up)
+					    	if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+					    	}
+					});
+  				}); 
+  				$(window).scroll(); //invoke scroll-handler on page-load
+			});
+
+			// $("#hello").hide();
+
+		</script>
+	
+	</body>
+</html>

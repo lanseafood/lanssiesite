@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>Surprise Surprise</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+		<link rel="stylesheet" href="css/ed.css">
+	</head>
+	<body>
+		<div class="parallax-window-top" data-parallax="scroll" data-image-src="images/hello.jpg">
+			<div id="hello">hello world</div>
+		</div>
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/banff.jpg">
+			<div class="regular_on_black" >
+			Today is a super special day!
+			</div>
+		</div>
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/sydney.jpg">
+			<div class="regular_on_black">
+				Why?
+			</div>
+		</div>
+
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/banff2.jpg">
+			<div class="regular_on_black">
+				Because today, 26 years ago,
+			</div>
+		</div>
+
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/sf.jpg">
+			<div class="regular_on_black">
+				you came into this world.  
+			</div>
+		</div>
+
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/ed1.jpg">
+			<div class="regular_on_white">
+			You grew hella (tall), studied your butt off, and matured (sorta :P)		
+			</div>
+		</div>
+
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/alps.jpg">
+			<div class="regular_on_black">
+				Now, you've became the wonderful, hardworking, reliable and well traveled person that we all know and love. 	
+			</div>
+		</div>
+
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/cambodia.jpg">
+			<div class="regular_on_black">
+				You've grown a lot from these past 26 years, met some amazing friends, visited some sick places, and made some kick-ass memories.
+			</div>
+		</div>
+
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/edfly.jpg">
+			<div class="regular_on_white">
+				But there's still many more awesome adventures and excitement for you in the years to come.	
+			</div>
+		</div>
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/edchamp.jpg">
+			<div class="regular_on_white">
+				So cheers to the old and the new
+			</div>
+		</div>
+
+		<div class="parallax-window-bot" data-parallax="scroll" data-image-src="images/star.jpg">
+			<div id="hbd">
+				Happy Birthday Ed!
+				<img src="images/edyay.png"></img>
+			</div>
+		</div>
+
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/parallax/parallax.js"></script>
+		<script type="text/javascript">
+			// hello
+			function toggle_to_Ed(){
+				var words = ['hello w0ld', 'hello wE1d', 'hello eLd', 'hello ElD', 'hello ed'];
+				var i = 0;
+				window.setInterval(function(){
+					if (i <= 4){
+						$("#hello").text(words[i]);
+						i++;
+					}
+				}, 50);
+			}
+
+			function extra_smiley(){
+				$("#hello").append(' :)');
+
+			}
+
+			$(document).ready(function(){
+				setTimeout(toggle_to_Ed, 650);
+				setTimeout(extra_smiley, 1500);
+			});
+
+			// fadein
+			$(window).on("load",function() {
+  				$(window).scroll(function() {
+    				$(".parallax-window").each(function() {
+					     /* Check the location of each desired element */
+					    var objectBottom = $(this).offset().top + $(this).outerHeight();
+					    var windowBottom = $(window).scrollTop() + $(window).innerHeight();
+					    var objectTop = $(this).offset().top;
+					    var windowTop = $(window).scrollTop();
+					      /* If the element is completely within bounds of the window, fade it in */
+					    if (objectTop < windowBottom) { //object comes into view (scrolling down)
+					    	if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+					    	} 
+					    else { //object goes out of view (scrolling up)
+					    	if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+					    	}
+					});
+  				}); 
+  				$(window).scroll(); //invoke scroll-handler on page-load
+			});
+
+		</script>
+	
+	</body>
+</html>
