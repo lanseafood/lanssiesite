@@ -54,6 +54,30 @@
 	/*opacity: .5;*/
 }
 
+.messages{
+	font-family: "KC";
+	text-align: 'center';
+	font-size: 20px;
+}
+
+.Row
+{
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 20px; /*Optional*/
+    padding: 40px, 40px;
+
+}
+.Column
+{
+    display: table-cell;
+    text-align: center;
+    font-family: "KC";
+	font-size: 20px;
+    /*background-color: red; /*Optional*/*/
+}
+
 /*id*/
 #hello{
 	font-size: 80px;
@@ -71,5 +95,9 @@
 	color:white;
 	padding-top: 180px;
 	font-family: 'spring';
-
+	padding-bottom: 200px;
+}
+#edyay{
+	width: 70%;
+	padding-top: 50px;
 }
