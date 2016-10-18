@@ -75,7 +75,7 @@
     text-align: center;
     font-family: "KC";
 	font-size: 20px;
-    /*background-color: red; /*Optional*/*/
+	vertical-align: middle;
 }
 
 /*id*/
@@ -104,5 +104,12 @@
 
 #names{
 	font-family: 'spring';
-	padding-top: 10px;
+	padding-top: 15px;
+	font-size: 25px;
+}
+#fat{
+	font-size: 15px;
+}
+#medium{
+	font-size: 18px;
 }

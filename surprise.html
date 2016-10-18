@@ -65,15 +65,15 @@
 			</div>
 		</div>
 
-		<div class="parallax-window-bot" data-parallax="scroll" data-image-src="images/star.jpg">
+		<div class="parallax-window" data-parallax="scroll" data-image-src="images/star.jpg">
 			<div id="hbd">
 				Happy Birthday Ed!
 				<img id="edyay" src="images/edyay.png"></img>
 				<div class="Row">
-					<div class="Column">Happy birthday Ed!! I'm so glad we were able to connect at a deeper level over sushi nakazawa in NYC. I'm super excited to be able to celebrate your 26th birthday in freakin Vegas!!!! Woot! Have a freakin awesome amazing birthday yo! ✌️️😎🍣 
+					<div class="Column" id="medium">Happy birthday Ed!! I'm so glad we were able to connect at a deeper level over sushi nakazawa in NYC. I'm super excited to be able to celebrate your 26th birthday in freakin Vegas!!!! Woot! Have a freakin awesome amazing birthday yo! ✌️️😎🍣 
 						<div id="names">Lydia</div>
 					</div>
-					<div class="Column">Ed, so glad we got to hang out so much more this year!! It's been super fun going to musical festivals, concerts, and other events with you. I'm super excited for Vegas and am sure it'll be a blast. Hope you are having an awesome birthday and get everything you want this year! 
+					<div class="Column" id="medium">Ed, so glad we got to hang out so much more this year!! It's been super fun going to musical festivals, concerts, and other events with you. I'm super excited for Vegas and am sure it'll be a blast. Hope you are having an awesome birthday and get everything you want this year! 
 						<div id="names">❤ Sophia </div>
 					</div>
 					<div class="Column">Ed, you're such a dreamy guy with great posture. Happy birthday sexy man. 
@@ -84,10 +84,12 @@
 					<div class="Column"> Agree with Owen's thoughts on your posture. Happy birthday!
 						<div id="names"> Clay</div>
 					</div>
-					<div class="Column">Hi Ed, I've really enjoyed getting to know you better and better over the past four years. I didn't think I'd meet great friends even after undergrad, but you proved me wrong. Thanks for being a fun travel companion and responsible guy who cleans up after everyone when they puke, lol (though we're getting older and that doesn't happen as much anymore ;)). I look forward to more bike rides, random 1:1's, and other exciting and adventurous memories in the future. Happy 26th!
-						<div id="names"> - Carson</div>
+					<div class="Column" id="fat">Hi Ed, <br> I've really enjoyed getting to know you better and better over the past four years. I didn't think I'd meet great friends even after undergrad, but you proved me wrong. Thanks for being a fun travel companion and responsible guy who cleans up after everyone when they puke, lol (though we're getting older and that doesn't happen as much anymore ;) ). I look forward to more bike rides, random 1:1's, and other exciting and adventurous memories in the future. Happy 26th!
+						<div id="names"> Carson</div>
 					</div>
-					<div class="Column"></div>
+					<div class="Column">Ed, I'm glad we've gotten to know each other better. I'll cherish all the chats we've had and memories we've made, and look forward to all our future adventures. Happy 26th!
+					<div id="names">Allen Wu</div>
+					</div>
 				</div>
 			</div>
 			
@@ -131,11 +133,15 @@
 					    var windowTop = $(window).scrollTop();
 					      /* If the element is completely within bounds of the window, fade it in */
 					    if (objectTop < windowBottom) { //object comes into view (scrolling down)
-					    	if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+					    	if ($(this).css("opacity")==0) {
+					    		$(this).fadeTo(1000,1);
+					    	}
 					    	} 
 					    else { //object goes out of view (scrolling up)
-					    	if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+					    	if ($(this).css("opacity")==1) {
+					    		$(this).fadeTo(1000,0);
 					    	}
+					    }
 					});
   				}); 
   				$(window).scroll(); //invoke scroll-handler on page-load
