@@ -75,6 +75,7 @@
     text-align: center;
     font-family: "KC";
 	font-size: 20px;
+	font-size: 1.5vw;
 	vertical-align: middle;
 }
 
@@ -98,7 +99,7 @@
 	padding-bottom: 200px;
 }
 #edyay{
-	width: 70%;
+	width: 50%;
 	padding-top: 50px;
 }
 
@@ -106,10 +107,16 @@
 	font-family: 'spring';
 	padding-top: 15px;
 	font-size: 25px;
+	padding-bottom: 10px;
 }
 #fat{
-	font-size: 15px;
+	/*font-size: 15px;*/
+	font-size: 1vw;
 }
 #medium{
-	font-size: 18px;
+	/*font-size: 18px;*/
+	font-size: 1.5vw;
+}
+#small{
+	font-size: 2vw;
 }
