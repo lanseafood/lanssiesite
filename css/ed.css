@@ -65,9 +65,9 @@
     display: table;
     width: 100%; /*Optional*/
     table-layout: fixed; /*Optional*/
-    border-spacing: 20px; /*Optional*/
+    border-spacing: 30px; /*Optional*/
     padding: 40px, 40px;
-
+    text-align: center;
 }
 .Column
 {
@@ -111,7 +111,7 @@
 }
 #fat{
 	/*font-size: 15px;*/
-	font-size: 1vw;
+	font-size: 1.2vw;
 }
 #medium{
 	/*font-size: 18px;*/
