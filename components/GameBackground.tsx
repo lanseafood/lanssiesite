@@ -77,10 +77,10 @@ export default function GameBackground() {
         style={{ left: '-150px', imageRendering: 'pixelated' }}
       >
         <div className="relative" style={{ width: '96px', height: '48px' }}>
-          <div className="absolute bottom-0 left-0 w-full h-6 bg-white opacity-90" style={{ borderRadius: '0' }}></div>
-          <div className="absolute bottom-3 left-6 w-10 h-10 bg-white opacity-90" style={{ borderRadius: '0' }}></div>
-          <div className="absolute bottom-3 right-6 w-10 h-10 bg-white opacity-90" style={{ borderRadius: '0' }}></div>
-          <div className="absolute bottom-4 left-12 w-12 h-8 bg-white opacity-90" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-6 bg-white opacity-70" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-3 left-6 w-10 h-10 bg-white opacity-70" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-3 right-6 w-10 h-10 bg-white opacity-70" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-4 left-12 w-12 h-8 bg-white opacity-70" style={{ borderRadius: '0' }}></div>
         </div>
       </div>
 
@@ -90,10 +90,10 @@ export default function GameBackground() {
         style={{ left: '-100px', imageRendering: 'pixelated' }}
       >
         <div className="relative" style={{ width: '112px', height: '56px' }}>
-          <div className="absolute bottom-0 left-0 w-full h-7 bg-white opacity-95" style={{ borderRadius: '0' }}></div>
-          <div className="absolute bottom-3 left-6 w-11 h-11 bg-white opacity-95" style={{ borderRadius: '0' }}></div>
-          <div className="absolute bottom-3 right-6 w-11 h-11 bg-white opacity-95" style={{ borderRadius: '0' }}></div>
-          <div className="absolute bottom-4 left-14 w-14 h-9 bg-white opacity-95" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-7 bg-white opacity-80" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-3 left-6 w-11 h-11 bg-white opacity-80" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-3 right-6 w-11 h-11 bg-white opacity-80" style={{ borderRadius: '0' }}></div>
+          <div className="absolute bottom-4 left-14 w-14 h-9 bg-white opacity-80" style={{ borderRadius: '0' }}></div>
         </div>
       </div>
 

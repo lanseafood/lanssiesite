@@ -8,7 +8,7 @@
 - **Domain**: lanssie.com
 - **Hosting Provider**: GitHub Pages
 - **DNS Nameservers**: GoDaddy (ns75.domaincontrol.com, ns76.domaincontrol.com)
-- **IP Address**: 192.30.252.153, 192.30.252.154 (GitHub Pages)
+- **IP Address**: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 (GitHub Pages) ✅
 
 ## 🔍 How to Verify & Manage Your Deployment
 
@@ -29,13 +29,15 @@ GitHub Pages provides free SSL, but you need to:
 4. If checkbox is grayed out, wait 24 hours after adding the domain
 
 ### 3. Update DNS Records in GoDaddy
-Your DNS is currently pointing to GitHub Pages correctly. To verify:
+Your DNS is currently pointing to GitHub Pages correctly. ✅ To verify:
 1. Log into GoDaddy
 2. Go to **My Products** → **DNS** (or **Domain Manager**)
 3. Look for A records pointing to:
-   - `192.30.252.153`
-   - `192.30.252.154`
-4. You may also need a CNAME record (check GitHub Pages settings for exact requirements)
+   - `185.199.108.153` ✅
+   - `185.199.109.153` ✅
+   - `185.199.110.153` ✅
+   - `185.199.111.153` ✅
+4. All four A records should be present for HTTPS to work
 
 ## 🚀 How to Deploy Changes
 
