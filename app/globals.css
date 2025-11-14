@@ -21,7 +21,11 @@
 }
 
 body {
-  @apply bg-white text-gray-900;
+  @apply text-gray-900;
+  font-family: 'Courier New', monospace;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 /* 3D Cube Styles */
@@ -49,6 +53,22 @@ body {
   50% {
     transform: translateY(-20px);
   }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+/* 8-bit pixelated rendering */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 /* Navigation styles */

@@ -81,6 +81,8 @@ export default function FloatingCube({ pages }: FloatingCubeProps) {
               ? `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
               : `rotateX(${autoRotation.x}deg) rotateY(${autoRotation.y}deg)`,
             transition: isHovered ? 'none' : 'transform 0.1s linear',
+            imageRendering: 'pixelated',
+            filter: 'contrast(1.2)',
           }}
         >
         {/* Cube faces */}
@@ -100,11 +102,15 @@ export default function FloatingCube({ pages }: FloatingCubeProps) {
             <Link
               key={index}
               href={page.href}
-              className={`cube-face absolute w-64 h-64 flex items-center justify-center text-white font-bold text-xl shadow-lg border-2 border-white/20 transition-all hover:scale-105 hover:shadow-2xl`}
+              className={`cube-face absolute w-64 h-64 flex items-center justify-center text-white font-bold text-xl border-4 border-black transition-all hover:scale-105`}
               style={{
                 background: page.color || '#3b82f6',
                 transform: position.transform,
                 backfaceVisibility: 'hidden',
+                imageRendering: 'pixelated',
+                boxShadow: 'inset 0 0 0 2px rgba(255,255,255,0.3), 4px 4px 0px rgba(0,0,0,0.5)',
+                fontFamily: 'Courier New, monospace',
+                textShadow: '2px 2px 0px rgba(0,0,0,0.8)',
               }}
             >
               <div className="text-center">
