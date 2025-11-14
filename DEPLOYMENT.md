@@ -1,124 +1,129 @@
-# Deployment Guide for lanssie.com
+# Deployment Guide - Next.js Website
 
-## Current Setup
-- **Domain**: lanssie.com (purchased from GoDaddy)
-- **Site Type**: Jekyll static site
-- **Status**: Needs HTTPS/SSL enabled
+## Quick Start
 
-## Enabling HTTPS/SSL
+Your website is now built with **Next.js + TypeScript** and can be deployed to GitHub Pages automatically!
 
-### Option 1: If hosted on GoDaddy
-1. Log into your GoDaddy account
-2. Go to **My Products** → **Web Hosting** → **Manage**
-3. Look for **SSL Certificate** or **Security** section
-4. Enable **Free SSL** (usually Let's Encrypt) or purchase an SSL certificate
-5. Wait 24-48 hours for SSL to activate
-6. Force HTTPS redirect (usually available in hosting settings)
+## Local Development
 
-### Option 2: If hosted elsewhere (GitHub Pages, Netlify, etc.)
-- **GitHub Pages**: Automatically provides HTTPS. Just ensure your site is set up correctly.
-- **Netlify**: Automatically provides HTTPS via Let's Encrypt
-- **Other hosts**: Check your hosting provider's SSL/HTTPS settings
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Option 3: Using Cloudflare (Recommended - Free)
-1. Sign up for free Cloudflare account
-2. Add your domain `lanssie.com`
-3. Update your DNS nameservers in GoDaddy to point to Cloudflare
-4. Cloudflare automatically provides free SSL/HTTPS
-5. Enable "Always Use HTTPS" in Cloudflare settings
+2. **Run development server:**
+   ```bash
+   npm run dev
+   ```
 
-## How to Deploy Changes
+3. **View your site:**
+   - Open [http://localhost:3000](http://localhost:3000)
+   - The mini-game will appear first
+   - Score 100 points to unlock the website
 
-### Step 1: Build Your Site
-Jekyll needs to be built before deployment. Run:
+## Deployment to GitHub Pages
 
-```bash
-bundle exec jekyll build
-```
+### Automatic Deployment (Recommended)
 
-This creates a `_site` folder with all the static HTML files.
+GitHub Actions is already configured! Just:
 
-### Step 2: Deploy Based on Your Hosting
+1. **Push to master branch:**
+   ```bash
+   git add .
+   git commit -m "Deploy Next.js website"
+   git push origin master
+   ```
 
-#### If using GoDaddy Web Hosting:
-1. Build your site: `bundle exec jekyll build`
-2. Log into GoDaddy File Manager or use FTP
-3. Upload all contents of the `_site` folder to your `public_html` directory
-4. Replace existing files when prompted
+2. **Enable GitHub Pages:**
+   - Go to your repository Settings → Pages
+   - Under "Source", select **GitHub Actions**
+   - The workflow will automatically build and deploy on every push
 
-**FTP Details** (usually found in GoDaddy hosting settings):
-- Host: ftp.yourdomain.com or IP address
-- Username: Your hosting username
-- Password: Your hosting password
-- Port: 21 (or 22 for SFTP)
+### Manual Deployment
 
-#### If using GitHub Pages:
-1. Push your code to a GitHub repository
-2. Go to repository Settings → Pages
-3. Select source branch (usually `main` or `gh-pages`)
-4. GitHub automatically builds and deploys your Jekyll site
-5. Your site will be available at `https://yourusername.github.io/repo-name`
-6. To use custom domain, add `CNAME` file with `lanssie.com` and update DNS
+If you prefer manual deployment:
 
-#### If using Netlify:
-1. Connect your GitHub repository to Netlify
-2. Set build command: `bundle exec jekyll build`
-3. Set publish directory: `_site`
-4. Netlify automatically builds and deploys on every git push
+1. **Build the site:**
+   ```bash
+   npm run build
+   ```
 
-#### If using other hosting (FTP/SFTP):
-1. Build your site: `bundle exec jekyll build`
-2. Use FTP client (FileZilla, Cyberduck, etc.) or command line
-3. Upload `_site` contents to your web root directory
+2. **The `out/` directory contains static files**
 
-## Quick Deployment Script
+3. **Deploy `out/` directory to GitHub Pages:**
+   - Use GitHub Pages settings to point to `out/` directory
+   - Or push `out/` contents to `gh-pages` branch
 
-You can use the provided `deploy.sh` script (if created) or manually:
+## What Changed from Jekyll?
 
-```bash
-# Build the site
-bundle exec jekyll build
+- ✅ **No Ruby required** - Just Node.js
+- ✅ **TypeScript** - Type-safe development
+- ✅ **React components** - Reusable, modern code
+- ✅ **Mini-game gateway** - Interactive entry point
+- ✅ **Modern tooling** - Next.js, Tailwind CSS
+- ✅ **Better performance** - Optimized builds
 
-# Then upload _site contents via your preferred method
-```
+## Customization
 
-## Testing Locally
+### Mini-Game
 
-Before deploying, test your site locally:
+Edit `components/MiniGame.tsx` to:
+- Change win condition (currently 100 points)
+- Adjust time limit (currently 30 seconds)
+- Modify game mechanics
+- Change styling
 
-```bash
-bundle exec jekyll serve
-```
+### Pages
 
-Visit `http://localhost:4000` to preview your site.
+Edit pages in `app/` directory:
+- `app/page.tsx` - Home page
+- `app/about/page.tsx` - About page
+- `app/cv/page.tsx` - CV page
+- `app/contact/page.tsx` - Contact page
+- `app/vr/page.tsx` - VR page
+
+### Styling
+
+- **Tailwind CSS**: Edit classes directly in components
+- **Custom CSS**: Add to `app/globals.css`
+- **Custom fonts**: Already configured in `app/globals.css`
 
 ## Troubleshooting
 
-### SSL Not Working?
-- Wait 24-48 hours after enabling SSL
-- Clear your browser cache
-- Check if your hosting provider requires manual SSL activation
-- Verify DNS settings are correct
+### Build Errors
 
-### Changes Not Appearing?
-- Make sure you built the site (`jekyll build`)
-- Clear browser cache (Ctrl+Shift+R or Cmd+Shift+R)
-- Check if you uploaded to the correct directory
-- Verify file permissions on server
+```bash
+# Clear cache and reinstall
+rm -rf node_modules .next out
+npm install
+npm run build
+```
 
-### Finding Your Hosting Provider
-1. Check your GoDaddy account for hosting services
-2. Look for emails from hosting providers
-3. Check your domain's DNS records (use `dig lanssie.com` or online tools)
-4. The nameservers will tell you where it's hosted
+### Local Development Issues
 
-## Recommended: Set Up Automated Deployment
+```bash
+# Make sure you're using Node.js 18+
+node --version
 
-Consider using:
-- **GitHub Pages** (free, automatic HTTPS)
-- **Netlify** (free tier, automatic HTTPS, easy setup)
-- **Cloudflare Pages** (free, automatic HTTPS)
+# Clear Next.js cache
+rm -rf .next
+npm run dev
+```
 
-These services automatically build and deploy your site when you push to GitHub, and provide free SSL certificates.
+### GitHub Pages Not Updating
 
+1. Check GitHub Actions tab for build errors
+2. Verify Pages settings point to GitHub Actions
+3. Wait a few minutes for deployment to complete
 
+## HTTPS/SSL
+
+HTTPS is automatically enabled on GitHub Pages. Once deployed, your site will be available at:
+- `https://lanssie.com` (if DNS is configured)
+- `https://lanseafood.github.io/lanssiesite` (GitHub Pages URL)
+
+## Need Help?
+
+- Next.js Docs: https://nextjs.org/docs
+- TypeScript Docs: https://www.typescriptlang.org/docs
+- Tailwind CSS Docs: https://tailwindcss.com/docs
