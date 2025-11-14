@@ -101,13 +101,13 @@ export default function GameBackground() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-green-500" style={{ imageRendering: 'pixelated' }}>
         {/* Bushes spread out - rounded poles with varying heights */}
         {[
-          { left: '8%', bundle: 'double', bottom: '7px', color1: '#16a34a', color2: '#22c55e', height1: '24px', height2: '32px' },
-          { left: '22%', bundle: 'single', bottom: '90px', color1: '#15803d', height1: '28px' },
-          { left: '35%', bundle: 'triple', bottom: '40px', color1: '#166534', color2: '#15803d', color3: '#16a34a', height1: '20px', height2: '36px', height3: '28px' },
-          { left: '48%', bundle: 'double', bottom: '32px', color1: '#22c55e', color2: '#4ade80', height1: '32px', height2: '24px' },
-          { left: '62%', bundle: 'single', bottom: '0px', color1: '#16a34a', height1: '40px' },
-          { left: '75%', bundle: 'triple', bottom: '20px', color1: '#15803d', color2: '#16a34a', color3: '#22c55e', height1: '28px', height2: '20px', height3: '36px' },
-          { left: '88%', bundle: 'double', bottom: '100px', color1: '#166534', color2: '#15803d', height1: '24px', height2: '32px' },
+          { left: '8%', bundle: 'double', bottom: '7px', color1: '#16a34a', color2: '#15803d', height1: '35px', height2: '45px' },
+          { left: '22%', bundle: 'single', bottom: '90px', color1: '#15803d', height1: '50px' },
+          { left: '35%', bundle: 'triple', bottom: '40px', color1: '#166534', color2: '#15803d', color3: '#16a34a', height1: '25px', height2: '55px', height3: '35px' },
+          { left: '48%', bundle: 'double', bottom: '32px', color1: '#166534', color2: '#4ade80', height1: '32px', height2: '40px' },
+          { left: '62%', bundle: 'single', bottom: '10px', color1: '#16a34a', height1: '40px' },
+          { left: '75%', bundle: 'triple', bottom: '20px', color1: '#15803d', color2: '#16a34a', color3: '#4ade80', height1: '35px', height2: '60px', height3: '45px' },
+          { left: '88%', bundle: 'double', bottom: '100px', color1: '#166534', color2: '#15803d', height1: '30px', height2: '40px' },
         ].map((bush, i) => (
           <div
             key={i}
@@ -123,10 +123,10 @@ export default function GameBackground() {
               <div 
                 className="bg-green-600"
                 style={{ 
-                  width: '12px',
+                  width: '20px',
                   height: bush.height1,
                   backgroundColor: bush.color1,
-                  borderRadius: '6px 6px 0 0',
+                  borderRadius: '10px 10px 0 0',
                 }}
               />
             )}
@@ -137,21 +137,21 @@ export default function GameBackground() {
                 <div 
                   className="absolute bottom-0 bg-green-600"
                   style={{ 
-                    width: '12px',
-                    height: bush.height1,
-                    left: '-8px',
-                    backgroundColor: bush.color1,
-                    borderRadius: '6px 6px 0 0',
+                    width: '16px',
+                    height: bush.height2,
+                    left: '10px',
+                    backgroundColor: bush.color2,
+                    borderRadius: '8px 8px 0 0',
                   }}
                 />
                 <div 
                   className="absolute bottom-0 bg-green-600"
                   style={{ 
-                    width: '12px',
-                    height: bush.height2,
-                    left: '8px',
-                    backgroundColor: bush.color2,
-                    borderRadius: '6px 6px 0 0',
+                    width: '20px',
+                    height: bush.height1,
+                    left: '-6px',
+                    backgroundColor: bush.color1,
+                    borderRadius: '10px 10px 0 0',
                   }}
                 />
               </div>
@@ -163,31 +163,31 @@ export default function GameBackground() {
                 <div 
                   className="absolute bottom-0 bg-green-600"
                   style={{ 
-                    width: '12px',
-                    height: bush.height1,
-                    left: '-16px',
-                    backgroundColor: bush.color1,
-                    borderRadius: '6px 6px 0 0',
-                  }}
-                />
-                <div 
-                  className="absolute bottom-0 bg-green-600"
-                  style={{ 
-                    width: '12px',
+                    width: '30px',
                     height: bush.height2,
                     left: '0px',
                     backgroundColor: bush.color2,
-                    borderRadius: '6px 6px 0 0',
+                    borderRadius: '15px 15px 0 0',
                   }}
                 />
                 <div 
                   className="absolute bottom-0 bg-green-600"
                   style={{ 
-                    width: '12px',
+                    width: '16px',
+                    height: bush.height1,
+                    left: '-12px',
+                    backgroundColor: bush.color1,
+                    borderRadius: '8px 8px 0 0',
+                  }}
+                />
+                <div 
+                  className="absolute bottom-0 bg-green-600"
+                  style={{ 
+                    width: '18px',
                     height: bush.height3,
-                    left: '16px',
+                    left: '19px',
                     backgroundColor: bush.color3,
-                    borderRadius: '6px 6px 0 0',
+                    borderRadius: '9px 9px 0 0',
                   }}
                 />
               </div>
