@@ -38,7 +38,7 @@ body {
 }
 
 .cube-wrapper {
-  animation: float 3s ease-in-out infinite;
+  /* No animation - static cube */
 }
 
 .cube-face {

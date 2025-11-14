@@ -1,132 +1,91 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import Link from 'next/link'
+import { useEffect, useMemo, useState } from 'react'
 
 interface FloatingCubeProps {
-  pages: Array<{ name: string; href: string; color: string }>
+  faceColors: string[]
+  activeFace: number
 }
 
-export default function FloatingCube({ pages }: FloatingCubeProps) {
-  const cubeRef = useRef<HTMLDivElement>(null)
-  const [isHovered, setIsHovered] = useState(false)
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
-  const [autoRotation, setAutoRotation] = useState({ x: 0, y: 0 })
+const cubeSize = 256
+const half = cubeSize / 2
 
-  // Auto-rotation animation
+export default function FloatingCube({ faceColors, activeFace }: FloatingCubeProps) {
+  const [isInitialMount, setIsInitialMount] = useState(true)
+
   useEffect(() => {
-    if (isHovered) return
+    setIsInitialMount(false)
+  }, [])
 
-    const interval = setInterval(() => {
-      setAutoRotation(prev => ({
-        x: prev.x + 0.5,
-        y: prev.y + 0.5,
-      }))
-    }, 50)
+  const faceRotations = useMemo(
+    () => [
+      { x: 0, y: 0 }, // Front
+      { x: 0, y: 90 }, // Right
+      { x: 0, y: 180 }, // Back
+      { x: 0, y: -90 }, // Left
+    ],
+    []
+  )
 
-    return () => clearInterval(interval)
-  }, [isHovered])
+  const currentRotation = faceRotations[Math.max(0, Math.min(3, activeFace))] ?? { x: 0, y: 0 }
 
-  // Mouse interaction
-  useEffect(() => {
-    if (!cubeRef.current) return
-
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isHovered) return
-      
-      const rect = cubeRef.current?.getBoundingClientRect()
-      if (!rect) return
-
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      
-      const deltaX = (e.clientX - centerX) / 10
-      const deltaY = (e.clientY - centerY) / 10
-
-      setRotation({
-        y: deltaX,
-        x: -deltaY,
-      })
-    }
-
-    const handleMouseLeave = () => {
-      setIsHovered(false)
-      setRotation({ x: 0, y: 0 })
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    cubeRef.current.addEventListener('mouseleave', handleMouseLeave)
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [isHovered])
-
-  // Ensure we have 6 pages (cube has 6 faces)
-  const cubePages = [
-    ...pages,
-    ...Array(6 - pages.length).fill({ name: '', href: '#', color: '#e5e7eb' })
-  ].slice(0, 6)
+  const faces = useMemo(
+    () => [
+      { id: 'front', transform: `rotateY(0deg) translateZ(${half}px)`, color: faceColors[0] ?? '#10b981' },
+      { id: 'right', transform: `rotateY(90deg) translateZ(${half}px)`, color: faceColors[1] ?? '#3b82f6' },
+      { id: 'back', transform: `rotateY(180deg) translateZ(${half}px)`, color: faceColors[2] ?? '#8b5cf6' },
+      { id: 'left', transform: `rotateY(-90deg) translateZ(${half}px)`, color: faceColors[3] ?? '#ef4444' },
+      { id: 'top', transform: `rotateX(90deg) translateZ(${half}px)`, color: '#f3f4f6' },
+      { id: 'bottom', transform: `rotateX(-90deg) translateZ(${half}px)`, color: '#d1d5db' },
+    ],
+    [faceColors]
+  )
 
   return (
-    <div className="flex items-center justify-center min-h-[60vh] perspective-1000">
-      <div className="cube-wrapper">
+    <div 
+      className="absolute inset-0 flex items-center justify-center" 
+      style={{ 
+        perspective: '1400px',
+        width: cubeSize,
+        height: cubeSize,
+      }}
+    >
+      <div
+        className="relative"
+        style={{
+          width: cubeSize,
+          height: cubeSize,
+          // filter: 'drop-shadow(8px 12px 25px rgba(0,0,0,0.45))',
+        }}
+      >
         <div
-          ref={cubeRef}
-          className="cube-container relative w-64 h-64"
-          onMouseEnter={() => setIsHovered(true)}
+          className="absolute inset-0"
           style={{
             transformStyle: 'preserve-3d',
-            transform: isHovered
-              ? `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`
-              : `rotateX(${autoRotation.x}deg) rotateY(${autoRotation.y}deg)`,
-            transition: isHovered ? 'none' : 'transform 0.1s linear',
-            imageRendering: 'pixelated',
-            filter: 'contrast(1.2)',
+            width: '100%',
+            height: '100%',
+            transform: `rotateX(${currentRotation.x}deg) rotateY(${currentRotation.y}deg)`,
+            transition: isInitialMount ? 'none' : 'transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1)',
           }}
         >
-        {/* Cube faces */}
-        {cubePages.map((page, index) => {
-          const positions = [
-            { transform: 'rotateY(0deg) translateZ(128px)', name: 'Front' },
-            { transform: 'rotateY(180deg) translateZ(128px)', name: 'Back' },
-            { transform: 'rotateY(90deg) translateZ(128px)', name: 'Right' },
-            { transform: 'rotateY(-90deg) translateZ(128px)', name: 'Left' },
-            { transform: 'rotateX(90deg) translateZ(128px)', name: 'Top' },
-            { transform: 'rotateX(-90deg) translateZ(128px)', name: 'Bottom' },
-          ]
-
-          const position = positions[index]
-
-          return (
-            <Link
-              key={index}
-              href={page.href}
-              className={`cube-face absolute w-64 h-64 flex items-center justify-center text-white font-bold text-xl border-4 border-black transition-all hover:scale-105`}
+          {faces.map(face => (
+            <div
+              key={face.id}
+              className="absolute inset-0"
               style={{
-                background: page.color || '#3b82f6',
-                transform: position.transform,
+                width: '100%',
+                height: '100%',
+                transform: face.transform,
+                background: face.color,
+                border: '4px solid rgba(90, 40, 19, 0.85)',
+                borderRadius: '18px',
                 backfaceVisibility: 'hidden',
-                imageRendering: 'pixelated',
-                boxShadow: 'inset 0 0 0 2px rgba(255,255,255,0.3), 4px 4px 0px rgba(0,0,0,0.5)',
-                fontFamily: 'Courier New, monospace',
-                textShadow: '2px 2px 0px rgba(0,0,0,0.8)',
+                WebkitBackfaceVisibility: 'hidden',
+                // boxShadow:
+                //   'inset 0 0 0 2px rgba(255,255,255,0.35), inset 0 0 35px rgba(0,0,0,0.25), 0 0 25px rgba(0,0,0,0.25)',
               }}
-            >
-              <div className="text-center">
-                <div className="text-4xl mb-2">
-                  {index === 0 && '🏠'}
-                  {index === 1 && '👤'}
-                  {index === 2 && '📄'}
-                  {index === 3 && '📧'}
-                  {index === 4 && '🥽'}
-                  {index === 5 && '⭐'}
-                </div>
-                <div>{page.name || position.name}</div>
-              </div>
-            </Link>
-          )
-        })}
+            />
+          ))}
         </div>
       </div>
     </div>
